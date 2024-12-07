@@ -1,3 +1,21 @@
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT', default='3306'),
+    }
+}
+
+
 INSTALLED_APPS = [
     # other apps...
     'rest_framework',
